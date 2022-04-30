@@ -5,7 +5,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <p>This is Working!</p>
+      <h1>Welcome to your Personal Fitness Tracker!</h1>
     </div>
   );
 }
