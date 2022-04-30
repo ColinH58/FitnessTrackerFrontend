@@ -5,8 +5,12 @@ html {
   color: black;
 }
 
-.app {
-  text-align: center;
+.Components {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .Logout {

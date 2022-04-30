@@ -11,6 +11,21 @@ const Navbar = () => {
 
   const links = [
     {
+      to: "/Activities",
+      text: "Activites",
+      shouldDisplay: true,
+    },
+    {
+      to: "/Routines",
+      text: "Routines",
+      shouldDisplay: true,
+    },
+    {
+      to: "/MyRoutines",
+      text: "My Routines",
+      shouldDisplay: true,
+    },
+    {
       to: "/Logout",
       text: "Log out",
       shouldDisplay: displayVal,
@@ -26,25 +41,12 @@ const Navbar = () => {
       text: "Login",
       shouldDisplay: !displayVal,
     },
-    {
-      to: "/Activities",
-      text: "Activites",
-      shouldDisplay: true,
-    },
-    {
-      to: "/Routines",
-      text: "Routines",
-      shouldDisplay: true,
-    },
-    {
-      to: "/MyRoutines",
-      text: "My Routines",
-      shouldDisplay: true,
-    },
   ];
   return (
     <div className="Navbar">
-      <Link className="NavTitle" to={"/HomePage"}>Fitness Tracker</Link>
+      <Link className="NavTitle" to={"/HomePage"}>
+        Fitness Tracker
+      </Link>
       <div className="NavMenuItems">
         {links.map((link) => {
           const { to, text, shouldDisplay, onClick = () => {} } = link;
