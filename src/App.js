@@ -2,13 +2,16 @@ import React from "react";
 import './App.css';
 import {
   HomePage,
+  Activities,
+  Routines,
 } from "./components";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <HomePage />
-      {/* <h2>HELLO???</h2> */}
+      <Activities />
+      <Routines />
     </div>
   );
 };

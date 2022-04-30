@@ -3,7 +3,7 @@ import React from 'react'
 const Routines = () => {
   return (
     <div>
-      <h2>Routines</h2>
+      <h3>This is where the ROUTINES will go</h3>
     </div>
   )
 };
