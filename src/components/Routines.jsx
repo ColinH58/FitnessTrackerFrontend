@@ -2,7 +2,9 @@ import React from 'react'
 
 const Routines = () => {
   return (
-    <div>Routines</div>
+    <div>
+      <h2>Routines</h2>
+    </div>
   )
 };
 

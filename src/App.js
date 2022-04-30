@@ -1,13 +1,16 @@
 import React from "react";
-
 import './App.css';
+import {
+  HomePage,
+} from "./components";
 
 function App() {
   return (
     <div className="App">
-      <h1>Welcome to your Personal Fitness Tracker!</h1>
+      <HomePage />
+      {/* <h2>HELLO???</h2> */}
     </div>
   );
-}
+};
 
 export default App;

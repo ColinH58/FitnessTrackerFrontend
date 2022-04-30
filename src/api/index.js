@@ -2,10 +2,10 @@ import axios from "axios";
 const API_URL = "https://fitnesstrac-kr.herokuapp.com/api/";
 
 export const api = axios.create({
-    baseUrl: `${API_URL}`
+    apiURL: `${API_URL}`
 });
 
-export const callApi = async () => {
+export const hitApi = async ({ url, method }) => {
     try {
         //something here...
     } catch (err) {
