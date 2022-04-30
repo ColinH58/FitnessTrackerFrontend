@@ -1,5 +1,18 @@
-* {
-  text-align: center;
-  background-color: lightblue;
+html {
+  margin: auto;
+  padding: 5px;
+  background-color: lightgray;
+  color: black;
 }
 
+.navbar {
+  position: fixed, top, 0px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+  background: steelblue;
+}
+
+.app {
+  text-align: center;
+}
