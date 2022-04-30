@@ -5,14 +5,60 @@ html {
   color: black;
 }
 
-.navbar {
-  position: fixed, top, 0px;
-  display: flex;
-  justify-content: flex-end;
-  padding: 5px;
-  background: steelblue;
-}
-
 .app {
   text-align: center;
+}
+
+.Logout {
+  width: "200px"; 
+  height: "100px";
+}
+
+button {
+  width: "100px"; 
+  height: "50px";
+}
+
+.Navbar {
+  background-color: steelblue;
+  color: white;
+  height: 4.5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.NavTitle {
+font-size: 24px;
+padding-left: 1.5em;
+}
+
+.NavMenuItems {
+padding-right: 3vw;
+display: flex;
+gap: 50px;
+}
+
+.NavLink,
+.NavTitle {
+  color: white;
+  text-decoration: none;
+}
+
+.NavLink:hover {
+  text-decoration: underline;
+}
+
+.Register,
+.Login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.RegisterTitle,
+.LoginTitle {
+  justify-content: center;
 }

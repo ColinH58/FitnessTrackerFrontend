@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const MyRoutines = () => {
   return (
     <div>
-        <h3>The user ROUTINE ACTIVITIES here</h3>
+      <h3>The user ROUTINE ACTIVITIES here</h3>
     </div>
-  )
+  );
 };
 
 export default MyRoutines;
