@@ -5,12 +5,16 @@ export const api = axios.create({
   apiURL: `${API_URL}`,
 });
 
-export const hitApi = async ({ url, method }) => {
-  try {
-    //something here...
-  } catch (err) {
-    console.error(err);
-  }
+export const testAuthentication = async () => {
+  const token = localStorage.getItem('token')
+  const response = await fetch(API_URL, {
+      method: "GET",
+      headers: {
+          'Authorization': `Bearer ${token}`
+      }
+  });
+  const json = await response.json();
+  return json.success;
 };
 
 export const getActivities = async () => {
