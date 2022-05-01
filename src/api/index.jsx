@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "https://fitnesstrac-kr.herokuapp.com/api/";
+const API_URL = "https://fast-plateau-20949.herokuapp.com/api/";
 
 export const api = axios.create({
   apiURL: `${API_URL}`,
@@ -19,7 +19,7 @@ export const testAuthentication = async () => {
 
 export const getActivities = async () => {
   const url =
-  "https://fitnesstrac-kr.herokuapp.com/api/users/activities";
+  "https://fast-plateau-20949.herokuapp.com/api/users/activities";
   const token = localStorage.getItem("token");
   const response = await fetch(url, {
       method: "GET",
@@ -34,7 +34,7 @@ export const getActivities = async () => {
 
 export const getRoutines = async () => {
   const url =
-  "https://fitnesstrac-kr.herokuapp.com/api/users/routines";
+  "https://fast-plateau-20949.herokuapp.com/api/users/routines";
   const token = localStorage.getItem("token");
   const response = await fetch(url, {
       method: "GET",
@@ -49,7 +49,7 @@ export const getRoutines = async () => {
 
 export const getMyRoutines = async () => {
   const url =
-  "https://fitnesstrac-kr.herokuapp.com/api/users/myroutines";
+  "https://fast-plateau-20949.herokuapp.com/api/users/myroutines";
   const token = localStorage.getItem("token");
   const response = await fetch(url, {
       method: "GET",
@@ -64,7 +64,7 @@ export const getMyRoutines = async () => {
 
 export const accountLogin = async (username, password) => {
   await fetch(
-    "https://fitnesstrac-kr.herokuapp.com/api/users/login",
+    "https://fast-plateau-20949.herokuapp.com/api/users/login",
     {
       method: "POST",
       headers: {
@@ -88,7 +88,7 @@ export const accountLogin = async (username, password) => {
 
 export const accountCreation = async (username, password) => {
   await fetch(
-    "https://fitnesstrac-kr.herokuapp.com/api/users/register",
+    "https://fast-plateau-20949.herokuapp.com/api/users/register",
     {
       method: "POST",
       headers: {
