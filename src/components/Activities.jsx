@@ -1,4 +1,5 @@
 import React from "react";
+// import { getActivities } from "../api";
 
 const Activities = () => {
   return (

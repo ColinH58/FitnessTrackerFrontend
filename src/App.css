@@ -3,6 +3,9 @@ html {
   padding: 5px;
   background-color: lightgray;
   color: black;
+  background-image: url("../wallpaper.jpg");
+  background-size: cover;
+  font-size: 1.25rem;
 }
 
 .Components {
@@ -11,6 +14,7 @@ html {
   align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
+  text-shadow: 2px 2px white;
 }
 
 .Logout {
@@ -64,6 +68,7 @@ gap: 50px;
   align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
+  text-shadow: 2px 2px white;
 }
 
 .RegisterTitle,

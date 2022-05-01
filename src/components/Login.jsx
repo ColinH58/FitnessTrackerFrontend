@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import { accountLogin } from "../api";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   const handleUsername = (e) => {
     setUsername(e.target.value);
   };
@@ -12,30 +14,15 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const submitInformation = async (event) => {
-    event.preventDefault();
-    const response = await fetch(
-      "https://fitnesstrac-kr.herokuapp.com/api/users/login",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "Application/json",
-        },
-        body: JSON.stringify({
-          username: username,
-          password: password,
-        }),
-      }
-    )
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-        const token = result.token;
-        const user = result.user.id;
-        localStorage.setItem("userToken", token);
-        localStorage.setItem("userID", user);
-      })
-      .catch(console.error);
+  const submitInformation = async (e) => {
+    e.preventDefault();
+    await accountLogin(username, password)
+    const token = localStorage.getItem("token")
+    if (token) {
+        navigate("/posts");
+     } else {
+       console.log("Invalid Login, Try Again")
+     }
     setUsername("");
     setPassword("");
   };
