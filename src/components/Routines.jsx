@@ -10,3 +10,7 @@ const Routines = () => {
 };
 
 export default Routines;
+
+/*
+Create Cards for Each Routine with a .map() function
+*/

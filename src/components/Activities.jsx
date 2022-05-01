@@ -10,3 +10,7 @@ const Activities = () => {
 };
 
 export default Activities;
+
+/*
+Create Cards for Each Activity with a .map() function
+*/
