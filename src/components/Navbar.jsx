@@ -11,50 +11,50 @@ const Navbar = () => {
 
   const links = [
     {
-      to: "/Activities",
-      text: "Activites",
+      route: "/Activities",
+      placeholder: "Activites",
       shouldDisplay: true,
     },
     {
-      to: "/Routines",
-      text: "Routines",
+      route: "/Routines",
+      placeholder: "Routines",
       shouldDisplay: true,
     },
     {
-      to: "/MyRoutines",
-      text: "My Routines",
+      route: "/MyRoutines",
+      placeholder: "My Routines",
       shouldDisplay: true,
     },
     {
-      to: "/Logout",
-      text: "Log out",
+      route: "/Logout",
+      placeholder: "Log out",
       shouldDisplay: displayVal,
       onClick: () => localStorage.removeItem("token"),
     },
     {
-      to: "/Register",
-      text: "Register",
+      route: "/Register",
+      placeholder: "Register",
       shouldDisplay: !displayVal,
     },
     {
-      to: "/Login",
-      text: "Login",
+      route: "/Login",
+      placeholder: "Login",
       shouldDisplay: !displayVal,
     },
   ];
   return (
     <div className="Navbar">
-      <Link className="NavTitle" to={"/HomePage"}>
+      <Link className="NavTitle" to={"/"}>
         Fitness Tracker
       </Link>
       <div className="NavMenuItems">
         {links.map((link) => {
-          const { to, text, shouldDisplay, onClick = () => {} } = link;
+          const { route, placeholder, shouldDisplay, onClick = () => {} } = link;
           if (shouldDisplay) {
             return (
               <div>
-                <Link className="NavLink" to={to} onClick={onClick}>
-                  {text}
+                <Link className="NavLink" to={route} onClick={onClick}>
+                  {placeholder}
                 </Link>
               </div>
             );
