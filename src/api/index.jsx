@@ -49,7 +49,7 @@ export const getRoutines = async () => {
 
 export const getMyRoutines = async () => {
   const url =
-  "https://fast-plateau-20949.herokuapp.com/api/myroutines";
+  "https://fast-plateau-20949.herokuapp.com/api/myroutines"; //THIS ONE IS WRONG, USER ID + ROUTINES, NOT 'MyRoutines'
   const token = localStorage.getItem("token");
   const response = await fetch(url, {
       method: "GET",
