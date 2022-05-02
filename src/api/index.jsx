@@ -19,7 +19,7 @@ export const testAuthentication = async () => {
 
 export const getActivities = async () => {
   const url =
-  "https://fast-plateau-20949.herokuapp.com/api/users/activities";
+  "https://fast-plateau-20949.herokuapp.com/api/activities";
   const token = localStorage.getItem("token");
   const response = await fetch(url, {
       method: "GET",
@@ -34,7 +34,7 @@ export const getActivities = async () => {
 
 export const getRoutines = async () => {
   const url =
-  "https://fast-plateau-20949.herokuapp.com/api/users/routines";
+  "https://fast-plateau-20949.herokuapp.com/api/routines";
   const token = localStorage.getItem("token");
   const response = await fetch(url, {
       method: "GET",
@@ -49,7 +49,7 @@ export const getRoutines = async () => {
 
 export const getMyRoutines = async () => {
   const url =
-  "https://fast-plateau-20949.herokuapp.com/api/users/myroutines";
+  "https://fast-plateau-20949.herokuapp.com/api/myroutines";
   const token = localStorage.getItem("token");
   const response = await fetch(url, {
       method: "GET",
