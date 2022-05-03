@@ -75,3 +75,8 @@ gap: 50px;
 .LoginTitle {
   justify-content: center;
 }
+
+.Card {
+  display: flex;
+  background-color: hsla(203.3, 78.8%, 16.7%, 50%);
+}
