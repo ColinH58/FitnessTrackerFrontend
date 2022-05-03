@@ -5,6 +5,7 @@ import { getActivities } from "../api";
 const Activities = () => {
   const [activities, setActivities] = useState([]);
   // const token = localStorage.getItem("userToken");
+  
   useEffect(() => {
       const fetchActivities = async() => {
           await getActivities().then(result => {

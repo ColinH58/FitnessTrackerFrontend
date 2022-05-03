@@ -4,6 +4,7 @@ import { getRoutines } from "../api";
 const Routines = () => {
   const [routines, setRoutines] = useState([]);
   // const token = localStorage.getItem("userToken");
+  
   useEffect(() => {
       const fetchRoutines = async() => {
           await getRoutines().then(result => {
