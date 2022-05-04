@@ -71,22 +71,21 @@ export const accountLogin = async (username, password) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        user: {
           username: username,
           password: password,
-        },
       }),
     }
   )
     .then((response) => response.json())
     .then((result) => {
-      localStorage.setItem("token", result.data.token);
+      localStorage.setItem("token", result.token);
       console.log(result);
     })
     .catch(console.error);
 };
 
 export const accountCreation = async (username, password) => {
+  console.log(username, password, "username and password")
   await fetch(
     "https://fast-plateau-20949.herokuapp.com/api/users/register",
     {
@@ -95,17 +94,15 @@ export const accountCreation = async (username, password) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        user: {
           username: username,
           password: password,
-        },
       }),
     }
   )
     .then((response) => response.json())
     .then((result) => {
-      console.log(result);
-      localStorage.setItem("token", result.data.token);
+      console.log(result, "the result");
+      localStorage.setItem("token", result.token);
     })
     .catch(console.error);
 };

@@ -17,7 +17,8 @@ const CreateAccount = ({ setIsLoggedIn }) => {
 
   const submitInformation = async (e) => {
     e.preventDefault();
-    await accountCreation(username, password);
+    const account = await accountCreation(username, password);
+    console.log(account, "this is the account")
     const token = localStorage.getItem("token")
     if (token) {
       navigate("/posts");
