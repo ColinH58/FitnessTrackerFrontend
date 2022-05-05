@@ -63,7 +63,7 @@ export const getMyRoutines = async () => {
 };
 
 export const accountLogin = async (username, password) => {
-  await fetch(
+  return await fetch(
     "https://fast-plateau-20949.herokuapp.com/api/users/login",
     {
       method: "POST",
@@ -79,7 +79,9 @@ export const accountLogin = async (username, password) => {
     .then((response) => response.json())
     .then((result) => {
       localStorage.setItem("token", result.token);
-      console.log(result);
+      return (
+        result.user.username
+      )
     })
     .catch(console.error);
 };

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { getActivities } from "../api";
+import { ActivityForm } from "./index";
 
 
-const Activities = () => {
+const Activities = ({ loggedIn }) => {
   const [activities, setActivities] = useState([]);
-  // const token = localStorage.getItem("userToken");
   
   useEffect(() => {
       const fetchActivities = async() => {
@@ -16,6 +16,8 @@ const Activities = () => {
       fetchActivities();
   }, [])
 
+  console.log("SKDFJLKSDJFSLKDJF" + loggedIn)
+
   return (
     <div className="Components">
       {activities.map((activity) => {
@@ -26,6 +28,7 @@ const Activities = () => {
           </div>
         )
       })}
+      {loggedIn ? <ActivityForm /> : null}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ setLoggedIn }) => {
   const location = useLocation();
   const [displayVal, setDisplayVal] = useState(localStorage.getItem("token"));
   useEffect(() => {
@@ -23,13 +23,16 @@ const Navbar = () => {
     {
       route: "/MyRoutines",
       placeholder: "My Routines",
-      shouldDisplay: true,
+      shouldDisplay: displayVal,
     },
     {
       route: "/Logout",
       placeholder: "Log out",
       shouldDisplay: displayVal,
-      onClick: () => localStorage.removeItem("token"),
+      onClick: () => {
+        localStorage.removeItem("token");
+        setLoggedIn(false);
+      },
     },
     {
       route: "/Register",
@@ -49,7 +52,12 @@ const Navbar = () => {
       </Link>
       <div className="NavMenuItems">
         {links.map((link) => {
-          const { route, placeholder, shouldDisplay, onClick = () => {} } = link;
+          const {
+            route,
+            placeholder,
+            shouldDisplay,
+            onClick = () => {},
+          } = link;
           if (shouldDisplay) {
             return (
               <div>
@@ -58,6 +66,8 @@ const Navbar = () => {
                 </Link>
               </div>
             );
+          } else {
+            return null;
           }
         })}
       </div>

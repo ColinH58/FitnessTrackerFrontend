@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { accountCreation } from "../api";
 
-const CreateAccount = ({ setIsLoggedIn }) => {
+const CreateAccount = ({ setLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -21,14 +21,15 @@ const CreateAccount = ({ setIsLoggedIn }) => {
     console.log(account, "this is the account")
     const token = localStorage.getItem("token")
     if (token) {
-      navigate("/posts");
+      navigate("/");
      } else {
        console.log("Invalid Login, Try Again")
      }
     setUsername("");
     setPassword("");
+    setLoggedIn(true);
   };
-
+console.log({setLoggedIn})
   return (
     <div className="Register">
       <h2>Register</h2>

@@ -4,7 +4,8 @@ import React from "react";
 const MyRoutines = () => {
   return (
     <div className="Components">
-      <h3>The user ROUTINE ACTIVITIES here</h3>
+      <h3>Form to create new routine</h3>
+      <p></p>
     </div>
   );
 };

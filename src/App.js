@@ -13,18 +13,20 @@ import {
 } from "./components";
 
 const App = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
+        <Navbar setLoggedIn={setLoggedIn} />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/Register" element={<Register />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Logout" element={<Logout />} />
-          <Route path="/Activities" element={<Activities />} />
+          <Route path="/Register" element={<Register setLoggedIn={setLoggedIn} />} />
+          <Route path="/Login" element={<Login setLoggedIn={setLoggedIn} />} />
+          {loggedIn ? null : <Route path="/Logout" element={<Logout />} /> }
+          <Route path="/Activities" element={<Activities loggedIn={loggedIn} />} />
           <Route path="/Routines" element={<Routines />} />
-          <Route path="/MyRoutines" element={<MyRoutines />} />
+          {loggedIn ? <Route path="/MyRoutines" element={<MyRoutines />} /> : null}
         </Routes>
       </BrowserRouter>
     </div>
