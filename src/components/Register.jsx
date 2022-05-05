@@ -23,13 +23,13 @@ const CreateAccount = ({ setLoggedIn }) => {
     if (token) {
       navigate("/");
      } else {
-       console.log("Invalid Login, Try Again")
+       alert("Invalid Login, Try Again")
      }
     setUsername("");
     setPassword("");
     setLoggedIn(true);
   };
-console.log({setLoggedIn})
+
   return (
     <div className="Register">
       <h2>Register</h2>
