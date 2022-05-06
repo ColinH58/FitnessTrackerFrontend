@@ -19,7 +19,7 @@ const Routines = () => {
     <div className="Components">
       {routines.map((routine) => {
         return (
-          <div className="Card" key={routine.id}>
+          <div className="Cards" key={routine.id}>
             <p>Creator Name: {routine.creatorName}</p>
             <p>Name: {routine.name}</p>
             <p>Goal: {routine.goal}</p>
