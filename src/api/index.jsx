@@ -46,17 +46,19 @@ export const getRoutines = async () => {
 };
 
 export const getMyRoutines = async (username) => {
-  const url = `https://fast-plateau-20949.herokuapp.com/api/users/${username}/routines`; //THIS ONE IS WRONG, USER ID + ROUTINES, NOT 'MyRoutines'(updated)
-  const token = localStorage.getItem("token");
-  const response = await fetch(url, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  const json = await response.json();
-  return json;
+  return await fetch(
+    `https://fast-plateau-20949.herokuapp.com/api/users/${username}/routines`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
+    .then((response) => response.json())
+    .then((result) => {
+      console.log(result);
+    })
+    .catch(console.error);
 };
 
 export const accountLogin = async (username, password) => {
