@@ -1,14 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 
-const Navbar = ({ setLoggedIn }) => {
-  const location = useLocation();
-  const [displayVal, setDisplayVal] = useState(localStorage.getItem("token"));
-  useEffect(() => {
-    console.log("token navbar: ", localStorage.getItem("token"));
-    setDisplayVal(localStorage.getItem("token"));
-  }, [location]);
-
+const Navbar = ({ loggedIn, setLoggedIn }) => {
   const links = [
     {
       route: "/Activities",
@@ -23,12 +16,12 @@ const Navbar = ({ setLoggedIn }) => {
     {
       route: "/MyRoutines",
       placeholder: "My Routines",
-      shouldDisplay: displayVal,
+      shouldDisplay: loggedIn,
     },
     {
       route: "/Logout",
       placeholder: "Log out",
-      shouldDisplay: displayVal,
+      shouldDisplay: loggedIn,
       onClick: () => {
         localStorage.removeItem("token");
         setLoggedIn(false);
@@ -37,12 +30,12 @@ const Navbar = ({ setLoggedIn }) => {
     {
       route: "/Register",
       placeholder: "Register",
-      shouldDisplay: !displayVal,
+      shouldDisplay: !loggedIn,
     },
     {
       route: "/Login",
       placeholder: "Login",
-      shouldDisplay: !displayVal,
+      shouldDisplay: !loggedIn,
     },
   ];
   return (

@@ -18,7 +18,7 @@ const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar setLoggedIn={setLoggedIn} />
+        <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/Register" element={<Register setLoggedIn={setLoggedIn} />} />
