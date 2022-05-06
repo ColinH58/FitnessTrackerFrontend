@@ -6,4 +6,6 @@ export { default as Login } from "./Login";
 export { default as Register } from "./Register";
 export { default as Logout } from "./Logout";
 export { default as Navbar } from "./Navbar";
-export { default as ActivityForm } from "./ActivityForm"
+export { default as ActivityForm } from "./ActivityForm";
+export { default as RoutineForm } from "./RoutineForm";
+export { default as EditRoutine } from "./EditRoutine";
