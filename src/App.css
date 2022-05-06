@@ -80,3 +80,7 @@ gap: 50px;
   display: flex;
   background-color: hsla(203.3, 78.8%, 16.7%, 50%);
 }
+
+.ActivityForm {
+  display: flex;
+};

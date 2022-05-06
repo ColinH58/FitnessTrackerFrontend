@@ -16,19 +16,17 @@ const Activities = ({ loggedIn }) => {
       fetchActivities();
   }, [])
 
-  console.log("SKDFJLKSDJFSLKDJF" + loggedIn)
-
   return (
     <div className="Components">
       {activities.map((activity) => {
         return (
           <div className="Card" key={activity.id}>
-            <p>{activity.name}</p>
-            <p>{activity.description}</p>
+            <p>Activity Name: {activity.name}</p>
+            <p>Activity Description: {activity.description}</p>
           </div>
         )
       })}
-      {loggedIn ? <ActivityForm /> : null}
+      {loggedIn ? <ActivityForm activities={activities} setActivities={setActivities} /> : null}
     </div>
   );
 };
