@@ -153,3 +153,19 @@ export const updateRoutine = async (routineId, name, goal) => {
     })
     .catch(console.error);
 };
+
+export const DeleteRoutine = async (routineId) => {
+  const token = localStorage.getItem("token");
+  fetch(`https://fast-plateau-20949.herokuapp.com/api/routines/${routineId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      console.log(result);
+    })
+    .catch(console.error);
+};
