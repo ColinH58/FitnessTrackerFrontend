@@ -1,7 +1,7 @@
 import React from "react";
 import { deleteRoutine } from "../api";
 
-const DeletedRoutine = (props) => {
+const DeleteRoutine = (props) => {
   const { routineId } = props;
   const userRoutines = props.userRoutines;
   const setUserRoutines = props.setUserRoutines;
@@ -23,4 +23,4 @@ const DeletedRoutine = (props) => {
   );
 };
 
-export default DeletedRoutine;
+export default DeleteRoutine;

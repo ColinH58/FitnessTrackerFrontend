@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import MyRoutineForm from "./index";
-import EditRoutine from "./index";
-import DeletedRoutine from "./index";
+import MyRoutineForm from "./MyRoutineForm";
+import EditRoutine from "./EditRoutine";
+import DeleteRoutine from "./DeleteRoutine";
 import { getMyRoutines } from "../api";
 
 const MyRoutines = () => {
@@ -33,7 +33,7 @@ const MyRoutines = () => {
               origGoal={item.goal}
               id={item.id}
             />
-            <DeletedRoutine
+            <DeleteRoutine
               userRoutines={userRoutines}
               setUserRoutines={setUserRoutines}
               id={item.id}
