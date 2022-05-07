@@ -20,8 +20,8 @@ const MyRoutineForm = () => {
 
   return (
     <div>
-      <h1> Create a Routine</h1>
-      <form onSubmit={handleCreateRoutineSubmit}>
+      <h1>Create a Routine</h1>
+      <form className="Cards" onSubmit={handleCreateRoutineSubmit}>
         <label htmlFor="name">Name:</label>
         <input
           type="text"
