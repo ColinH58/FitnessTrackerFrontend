@@ -6,6 +6,8 @@ html {
   background-image: url("../wallpaper.jpg");
   background-size: cover;
   font-size: 1.25rem;
+  width: 100vw;
+  height: 100vh;
 }
 
 .Components {
