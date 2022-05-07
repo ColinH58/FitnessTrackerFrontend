@@ -6,6 +6,8 @@ html {
   background-image: url("../wallpaper.jpg");
   background-size: cover;
   font-size: 1.25rem;
+  width: 100vw;
+  height: 100vh;
 }
 
 .Components {
@@ -76,7 +78,15 @@ gap: 50px;
   justify-content: center;
 }
 
-.Card {
-  display: flex;
+.Cards {
+  display: inline-block;
   background-color: hsla(203.3, 78.8%, 16.7%, 50%);
+  margin: 15px;
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 33px;
 }
+
+.ActivityForm {
+  display: flex;
+};

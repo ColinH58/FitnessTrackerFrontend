@@ -1,10 +1,11 @@
 import React from "react";
 // import { getMyRoutines } from "../api";
+import { ActivityForm } from "./index";
 
 const MyRoutines = () => {
   return (
     <div className="Components">
-      <h3>Form to create new routine</h3>
+      <ActivityForm />
       <p></p>
     </div>
   );

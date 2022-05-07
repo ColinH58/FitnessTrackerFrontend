@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import {
@@ -15,10 +15,17 @@ import {
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
 
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+    if (token) {
+      setLoggedIn(true);
+    }
+}, []);
+
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar setLoggedIn={setLoggedIn} />
+        <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/Register" element={<Register setLoggedIn={setLoggedIn} />} />
