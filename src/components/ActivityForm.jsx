@@ -8,10 +8,12 @@ const ActivityForm = ({ activities, setActivities }) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
 
-    const activityCheck = activities.filter((activity) => activity.newActivity);
+    const activityCheck = activities.find(activity => activity.name === newActivity);
 
-    if (activityCheck !== newActivity) {
-      const response = await fetch(
+    if (activityCheck) {
+      alert("This Activity Already Exists");
+    } else {
+      return await fetch(
         "https://fast-plateau-20949.herokuapp.com/api/activities",
         {
           method: "POST",
@@ -20,6 +22,7 @@ const ActivityForm = ({ activities, setActivities }) => {
             "Authorization" : `Bearer ${token}`
           },
           body: JSON.stringify({
+            id: newActivity,
             name: newActivity,
             description: newActivityDesc
           })
@@ -28,8 +31,6 @@ const ActivityForm = ({ activities, setActivities }) => {
             setActivities([result, ...activities])
           })
         .catch(console.error)
-    } else {
-      alert("This Activity Already Exists");
     }
     setNewActivity("");
     setNewActivityDesc("");
@@ -39,7 +40,7 @@ const ActivityForm = ({ activities, setActivities }) => {
     <div className="ActivityForm">
       <form onSubmit={handleSubmit}>
         <h3>Create an Activity</h3>
-        <label>Acivity Name</label>
+        <label>Activity Name</label>
         <br />
         <input
           type="text"
