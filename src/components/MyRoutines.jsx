@@ -24,7 +24,7 @@ const MyRoutines = () => {
         userRoutines={userRoutines}
         setUserRoutines={setUserRoutines}
       />
-      {userRoutines ? (
+      {userRoutines.length > 1 ? (
         userRoutines.map((routine) => {
           return (
             <div className="Cards" key={routine.id}>
@@ -44,10 +44,10 @@ const MyRoutines = () => {
                 id={routine.id}
               />
             </div>
-          );
+          )
         })
       ) : (
-        <p>No Routines to display</p>
+        <p className="Misc">No Routines to display</p>
       )}
     </div>
   );

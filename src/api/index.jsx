@@ -1,12 +1,11 @@
 export const getActivities = async () => {
   const url =
   "https://fast-plateau-20949.herokuapp.com/api/activities";
-  const token = localStorage.getItem("token");
+
   const response = await fetch(url, {
       method: "GET",
       headers: {
-        "Content-Type": "application/json",
-        'Authorization': `Bearer ${token}`
+        "Content-Type": "application/json"
       },
   });
   const json = await response.json();
@@ -16,12 +15,10 @@ export const getActivities = async () => {
 export const getRoutines = async () => {
   const url =
   "https://fast-plateau-20949.herokuapp.com/api/routines";
-  const token = localStorage.getItem("token");
   const response = await fetch(url, {
       method: "GET",
       headers: {
-        "Content-Type": "application/json",
-        'Authorization': `Bearer ${token}`
+        "Content-Type": "application/json"
       },
   });
   const json = await response.json();
