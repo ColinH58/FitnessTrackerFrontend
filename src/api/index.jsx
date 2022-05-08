@@ -58,7 +58,7 @@ export const getMyRoutines = async (username) => {
   )
     .then((response) => response.json())
     .then((result) => {
-      console.log(result);
+      return(result);
     })
     .catch(console.error);
 };
@@ -76,10 +76,10 @@ export const accountLogin = async (username, password) => {
           password: password,
       }),
     }
-  )
+    )
     .then(response => response.json())
     .then(result => {
-      localStorage.setItem("token", result.token);
+      localStorage.setItem("token", result.token)
       return (
         result.user.username
       )
@@ -103,8 +103,7 @@ export const accountCreation = async (username, password) => {
   )
     .then((response) => response.json())
     .then((result) => {
-      console.log(result, "the result");
-      localStorage.setItem("token", result.token);
+      localStorage.setItem("token", result.token)
     })
     .catch(console.error);
 };

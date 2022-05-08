@@ -6,10 +6,11 @@ import { getMyRoutines } from "../api";
 
 const MyRoutines = () => {
   const [userRoutines, setUserRoutines] = useState({});
+  const token = localStorage.getItem("token")
 
   useEffect(() => {
     const fetchRoutines = async() => {
-        await getMyRoutines().then(result => {
+        await getMyRoutines(token).then(result => {
           setUserRoutines(result)
             })
             .catch(console.error);

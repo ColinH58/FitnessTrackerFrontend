@@ -33,7 +33,7 @@ const App = () => {
           {loggedIn ? null : <Route path="/Logout" element={<Logout />} /> }
           <Route path="/Activities" element={<Activities loggedIn={loggedIn} />} />
           <Route path="/Routines" element={<Routines />} />
-          {loggedIn ? <Route path="/MyRoutines" element={<MyRoutines loggedIn={loggedIn} />} /> : null}
+          {loggedIn ? <Route path="/MyRoutines" element={<MyRoutines />} /> : null}
         </Routes>
       </BrowserRouter>
     </div>
