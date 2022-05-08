@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getRoutines } from "../api";
 
 const Routines = () => {
-  const [routines, setRoutines] = useState([]);
-  // const token = localStorage.getItem("userToken");
+  const [routines, setRoutines] = useState();
   
   useEffect(() => {
       const fetchRoutines = async() => {
@@ -41,7 +40,3 @@ const Routines = () => {
 };
 
 export default Routines;
-
-/*
-Create Cards for Each Routine with a .map() function
-*/

@@ -5,46 +5,46 @@ import DeleteRoutine from "./DeleteRoutine";
 import { getMyRoutines } from "../api";
 
 const MyRoutines = () => {
-  const [userRoutines, setUserRoutines] = useState([]);
+  const [userRoutines, setUserRoutines] = useState({});
 
   useEffect(() => {
-    async function fetchData() {
-      const result = await getMyRoutines();
-      setUserRoutines(result);
+    const fetchRoutines = async() => {
+        await getMyRoutines().then(result => {
+          setUserRoutines(result)
+            })
+            .catch(console.error);
     }
-    fetchData();
-  }, []); //I think this will need to be fixed...maybe username needs to be added.idkidk
+    fetchRoutines();
+}, [])
 
-  return (
-    <div className="Components">
-      <MyRoutineForm
+return (
+  <div className="Components">
+          <MyRoutineForm
         userRoutines={userRoutines}
         setUserRoutines={setUserRoutines}
       />
       {userRoutines ? (
-        userRoutines.map((item, index) => (
-          <div key={item.id}>
-            <h2>{item.name}</h2>
-            <h3>Goal: {item.goal}</h3>
+        userRoutines.map(routine => {
+          return (
+          <div className="Cards" key={routine.id}>
+            <h3>Routine Creator: {routine.creatorName}</h3>
+            <h3>Routine Name: {routine.name}</h3>
+            <h3>Routine Goal: {routine.goal}</h3>
             <EditRoutine
               userRoutines={userRoutines}
               setUserRoutines={setUserRoutines}
-              origName={item.name}
-              origGoal={item.goal}
-              id={item.id}
+              origName={routine.name}
+              origGoal={routine.goal}
+              id={routine.id}
             />
             <DeleteRoutine
               userRoutines={userRoutines}
               setUserRoutines={setUserRoutines}
-              id={item.id}
+              id={routine.id}
             />
-          </div>
-        ))
-      ) : (
-        <p>No Routines to display</p>
-      )}
+          </div>)
+          })) : (<p>No Routines to display</p>)}
     </div>
-  );
-};
+)};
 
 export default MyRoutines;

@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { newRoutine } from "../api";
 
-const MyRoutineForm = () => {
-  const [name, setName] = useState("");
-  const [goal, setGoal] = useState("");
+const MyRoutineForm = ({ userRoutines, setUserRoutines }) => {
+  const [name, setName] = useState();
+  const [goal, setGoal] = useState();
+  // const [routineActivities, setRoutineActivities] = useState([]);
 
-  const handleCreateRoutineSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     await newRoutine(name, goal);
-    setName("");
-    setGoal("");
+    // const token = localStorage.getItem("token");
   };
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -21,7 +21,7 @@ const MyRoutineForm = () => {
   return (
     <div>
       <h1>Create a Routine</h1>
-      <form className="Cards" onSubmit={handleCreateRoutineSubmit}>
+      <form className="Cards" onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label>
         <input
           type="text"
