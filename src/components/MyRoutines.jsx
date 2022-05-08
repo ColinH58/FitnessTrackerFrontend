@@ -5,7 +5,7 @@ import DeleteRoutine from "./DeleteRoutine";
 import { getMyRoutines } from "../api";
 
 const MyRoutines = () => {
-  const [userRoutines, setUserRoutines] = useState([]);
+  const [userRoutines, setUserRoutines] = useState({});
 
   useEffect(() => {
     const fetchRoutines = async () => {
@@ -18,13 +18,15 @@ const MyRoutines = () => {
     fetchRoutines();
   }, []);
 
+  // console.log(userRoutines)
+
   return (
     <div className="Components">
       <MyRoutineForm
         userRoutines={userRoutines}
         setUserRoutines={setUserRoutines}
       />
-      {userRoutines.length > 1 ? (
+      {userRoutines.length >= 1 ? (
         userRoutines.map((routine) => {
           return (
             <div className="Cards" key={routine.id}>
