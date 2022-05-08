@@ -16,7 +16,6 @@ const MyRoutineForm = ({ userRoutines, setUserRoutines }) => {
       if (routineCheck) {
         alert("This Routine Already Exists");
       } else {
-        console.log("ANYTHING")
         const token = localStorage.getItem("token")
         return await fetch(
           "https://fast-plateau-20949.herokuapp.com/api/routines",
@@ -36,7 +35,6 @@ const MyRoutineForm = ({ userRoutines, setUserRoutines }) => {
       )
         .then((response) => response.json())
         .then((result) => {
-          console.log("THIS IS THE RESULT", result)
           setUserRoutines([result, ...userRoutines])
         })
         .catch(console.error);

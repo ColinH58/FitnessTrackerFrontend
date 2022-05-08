@@ -26,7 +26,6 @@ export const getRoutines = async () => {
 export const getMyRoutines = async () => {
   const username = localStorage.getItem("username");
   const token = localStorage.getItem("token");
-  console.log(username);
   return await fetch(
     `https://fast-plateau-20949.herokuapp.com/api/users/${username}/routines`,
     {
@@ -95,7 +94,6 @@ export const getMe = async () => {
   })
     .then((response) => response.json())
     .then((result) => {
-      console.log(result);
     })
     .catch(console.error);
 };
@@ -112,7 +110,7 @@ export const newRoutine = async (name, goal, isPublic) => {
   })
     .then((response) => response.json())
     .then((result) => {
-      console.log(result);
+      return(result);
     })
     .catch(console.error);
 };
@@ -137,7 +135,7 @@ export const updateRoutine = async (routineId, name, goal, isPublic) => {
   )
     .then( async (response) => await response.json())
     .then((result) => {
-      console.log(result);
+      return(result);
     })
     .catch(console.error);
 };
@@ -153,7 +151,7 @@ export const deleteRoutine = async (routineId) => {
   })
     .then( async (response) => await response.json())
     .then((result) => {
-      console.log(result);
+      return(result);
     })
     .catch(console.error);
 };

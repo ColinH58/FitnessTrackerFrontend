@@ -11,7 +11,6 @@ const MyRoutines = ({ isPublic, setIsPublic }) => {
     const fetchRoutines = async () => {
       await getMyRoutines()
         .then((result) => {
-          console.log("AHHHHHHHHHH", result)
           setUserRoutines(result);
         })
         .catch(console.error);
