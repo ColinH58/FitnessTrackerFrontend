@@ -126,7 +126,6 @@ export const updateRoutine = async (routineId, name, goal, isPublic) => {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        id: routineId,
         name: name,
         goal: goal,
         isPublic: isPublic
@@ -142,16 +141,15 @@ export const updateRoutine = async (routineId, name, goal, isPublic) => {
 
 export const deleteRoutine = async (routineId) => {
   const token = localStorage.getItem("token");
-  fetch(`https://fast-plateau-20949.herokuapp.com/api/routines/${routineId}`, {
+  await fetch(`https://fast-plateau-20949.herokuapp.com/api/routines/${routineId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
-    }
+    },
+  }).then(response => response.json())
+  .then(result => {
+    console.log(result);
   })
-    .then( async (response) => await response.json())
-    .then((result) => {
-      return(result);
-    })
-    .catch(console.error);
+  .catch(console.error);
 };

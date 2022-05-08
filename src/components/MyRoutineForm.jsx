@@ -66,7 +66,7 @@ const MyRoutineForm = ({ userRoutines, setUserRoutines }) => {
           onChange={(e) => setGoal(e.target.value)}
         />
         <hr />
-        <label>Public</label>
+        <label>Post Publicly?</label>
         <br />
         <input
           type="checkbox"

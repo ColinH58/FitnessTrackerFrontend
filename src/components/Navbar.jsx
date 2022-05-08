@@ -60,8 +60,8 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
           } = link;
           if (shouldDisplay) {
             return (
-              <div>
-                <Link className="NavLink" key={key} to={route} onClick={onClick}>
+              <div key={key}>
+                <Link className="NavLink" to={route} onClick={onClick}>
                   {placeholder}
                 </Link>
               </div>
