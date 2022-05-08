@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { newRoutine } from "../api";
 
 const MyRoutineForm = ({ userRoutines, setUserRoutines }) => {
   const [name, setName] = useState("");
@@ -8,23 +7,21 @@ const MyRoutineForm = ({ userRoutines, setUserRoutines }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
-    const username = localStorage.getItem("username");
-
+    
     const routineCheck = userRoutines.find(
       (routine) => routine.name === name
-    );
-
-    if (routineCheck) {
-      alert("This Routine Already Exists");
-    } else {
-      return await fetch(
+      );
+      
+      if (routineCheck) {
+        alert("This Routine Already Exists");
+      } else {
+        const username = localStorage.getItem("username");
+        return await fetch(
         `https://fast-plateau-20949.herokuapp.com/api/users/${username}/routines`,
         {
           method: "POST",
           headers: {
-            "Content-type": "Application/json",
-            Authorization: `Bearer ${token}`,
+            "Content-type": "Application/json"
           },
           body: JSON.stringify({
             id: name,

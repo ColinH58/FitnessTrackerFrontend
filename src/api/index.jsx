@@ -28,7 +28,8 @@ export const getRoutines = async () => {
   return json;
 };
 
-export const getMyRoutines = async (username) => {
+export const getMyRoutines = async () => {
+  const username = localStorage.getItem("username")
   return await fetch(
     `https://fast-plateau-20949.herokuapp.com/api/users/${username}/routines`,
     {

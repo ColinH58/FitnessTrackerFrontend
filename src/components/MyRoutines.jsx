@@ -7,18 +7,16 @@ import { getMyRoutines } from "../api";
 const MyRoutines = () => {
   const [userRoutines, setUserRoutines] = useState([]);
 
-  const username = localStorage.getItem("username");
-
   useEffect(() => {
     const fetchRoutines = async () => {
-      await getMyRoutines(username)
+      await getMyRoutines()
         .then((result) => {
           setUserRoutines(result);
         })
         .catch(console.error);
     };
     fetchRoutines();
-  }, [username]);
+  }, []);
 
   return (
     <div className="Components">
