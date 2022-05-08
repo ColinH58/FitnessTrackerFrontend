@@ -5,47 +5,53 @@ import DeleteRoutine from "./DeleteRoutine";
 import { getMyRoutines } from "../api";
 
 const MyRoutines = () => {
-  const [userRoutines, setUserRoutines] = useState({});
-  const token = localStorage.getItem("token")
+  const [userRoutines, setUserRoutines] = useState([]);
+  const username = localStorage.getItem("username"); //THIS IS WRONG, HOW TO FIX?
 
   useEffect(() => {
-    const fetchRoutines = async() => {
-        await getMyRoutines(token).then(result => {
-          setUserRoutines(result)
-            })
-            .catch(console.error);
-    }
+    const fetchRoutines = async () => {
+      await getMyRoutines(username)
+        .then((result) => {
+          setUserRoutines(result);
+        })
+        .catch(console.error);
+    };
     fetchRoutines();
-}, [])
+  }, []);
 
-return (
-  <div className="Components">
-          <MyRoutineForm
+  return (
+    <div className="Components">
+      <MyRoutineForm
         userRoutines={userRoutines}
         setUserRoutines={setUserRoutines}
       />
       {userRoutines ? (
-        userRoutines.map(routine => {
+        userRoutines.map((routine) => {
           return (
-          <div className="Cards" key={routine.id}>
-            <h3>Routine Creator: {routine.creatorName}</h3>
-            <h3>Routine Name: {routine.name}</h3>
-            <h3>Routine Goal: {routine.goal}</h3>
-            <EditRoutine
-              userRoutines={userRoutines}
-              setUserRoutines={setUserRoutines}
-              origName={routine.name}
-              origGoal={routine.goal}
-              id={routine.id}
-            />
-            <DeleteRoutine
-              userRoutines={userRoutines}
-              setUserRoutines={setUserRoutines}
-              id={routine.id}
-            />
-          </div>)
-          })) : (<p>No Routines to display</p>)}
+            <div className="Cards" key={routine.id}>
+              <h3>Routine Creator: {routine.creatorName}</h3>
+              <h3>Routine Name: {routine.name}</h3>
+              <h3>Routine Goal: {routine.goal}</h3>
+              <EditRoutine
+                userRoutines={userRoutines}
+                setUserRoutines={setUserRoutines}
+                origName={routine.name}
+                origGoal={routine.goal}
+                id={routine.id}
+              />
+              <DeleteRoutine
+                userRoutines={userRoutines}
+                setUserRoutines={setUserRoutines}
+                id={routine.id}
+              />
+            </div>
+          );
+        })
+      ) : (
+        <p>No Routines to display</p>
+      )}
     </div>
-)};
+  );
+};
 
 export default MyRoutines;

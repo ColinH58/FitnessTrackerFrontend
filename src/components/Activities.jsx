@@ -2,19 +2,19 @@ import React, { useState, useEffect } from "react";
 import { getActivities } from "../api";
 import { ActivityForm } from "./index";
 
-
 const Activities = ({ loggedIn }) => {
   const [activities, setActivities] = useState([]);
-  
+
   useEffect(() => {
-      const fetchActivities = async() => {
-          await getActivities().then(result => {
-                  setActivities(result)
-              })
-              .catch(console.error);
-      }
-      fetchActivities();
-  }, [])
+    const fetchActivities = async () => {
+      await getActivities()
+        .then((result) => {
+          setActivities(result);
+        })
+        .catch(console.error);
+    };
+    fetchActivities();
+  }, []);
 
   return (
     <div className="Components">
@@ -24,9 +24,11 @@ const Activities = ({ loggedIn }) => {
             <p>Activity Name: {activity.name}</p>
             <p>Activity Description: {activity.description}</p>
           </div>
-        )
+        );
       })}
-      {loggedIn ? <ActivityForm activities={activities} setActivities={setActivities} /> : null}
+      {loggedIn ? (
+        <ActivityForm activities={activities} setActivities={setActivities} />
+      ) : null}
     </div>
   );
 };

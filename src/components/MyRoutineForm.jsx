@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { newRoutine } from "../api";
 
 const MyRoutineForm = ({ userRoutines, setUserRoutines }) => {
-  const [name, setName] = useState();
-  const [goal, setGoal] = useState();
+  const [name, setName] = useState("");
+  const [goal, setGoal] = useState("");
   // const [routineActivities, setRoutineActivities] = useState([]);
 
   const handleSubmit = async (event) => {

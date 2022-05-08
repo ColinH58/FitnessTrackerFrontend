@@ -1,22 +1,3 @@
-import axios from "axios";
-const API_URL = "https://fast-plateau-20949.herokuapp.com/api/";
-
-export const api = axios.create({
-  apiURL: `${API_URL}`,
-});
-
-export const testAuthentication = async () => {
-  const token = localStorage.getItem('token')
-  const response = await fetch(API_URL, {
-      method: "GET",
-      headers: {
-          'Authorization': `Bearer ${token}`
-      }
-  });
-  const json = await response.json();
-  return json.success;
-};
-
 export const getActivities = async () => {
   const url =
   "https://fast-plateau-20949.herokuapp.com/api/activities";
