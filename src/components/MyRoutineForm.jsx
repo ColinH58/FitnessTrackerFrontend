@@ -6,37 +6,67 @@ const MyRoutineForm = ({ userRoutines, setUserRoutines }) => {
   const [goal, setGoal] = useState("");
   // const [routineActivities, setRoutineActivities] = useState([]);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    await newRoutine(name, goal);
-    // const token = localStorage.getItem("token");
-  };
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-  const handleGoalChange = (e) => {
-    setGoal(e.target.value);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem("token");
+    const username = localStorage.getItem("username");
+
+    const routineCheck = userRoutines.find(
+      (routine) => routine.name === name
+    );
+
+    if (routineCheck) {
+      alert("This Routine Already Exists");
+    } else {
+      return await fetch(
+        `https://fast-plateau-20949.herokuapp.com/api/users/${username}/routines`,
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "Application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            id: name,
+            name: name,
+            goal: goal,
+          }),
+        }
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          setUserRoutines([result, ...userRoutines]);
+        })
+        .catch(console.error);
+    }
+    setName("");
+    setGoal("");
   };
 
   return (
-    <div>
-      <h1>Create a Routine</h1>
-      <form className="Cards" onSubmit={handleSubmit}>
-        <label htmlFor="name">Name:</label>
+    <div className="Form">
+      <form onSubmit={handleSubmit}>
+      <h3>Create a Routine</h3>
+        <label>Name</label>
+        <br />
         <input
           type="text"
+          placeholder="Name your Routine"
           value={name}
-          onChange={handleNameChange}
+          onChange={(e) => setName(e.target.value)}
           name="name"
         />
-        <label htmlFor="goal">Goal:</label>
+        <hr />
+        <label>Goal</label>
+        <br />
         <input
           type="text"
-          name="goal"
+          placeholder="Write your Goal"
           value={goal}
-          onChange={handleGoalChange}
+          onChange={(e) => setGoal(e.target.value)}
         />
-        <button type="submit">Submit New Routine</button>
+        <hr />
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

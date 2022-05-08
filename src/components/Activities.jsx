@@ -18,6 +18,9 @@ const Activities = ({ loggedIn }) => {
 
   return (
     <div className="Components">
+      {loggedIn ? (
+        <ActivityForm activities={activities} setActivities={setActivities} />
+      ) : null}
       {activities.map((activity) => {
         return (
           <div className="Cards" key={activity.id}>
@@ -26,9 +29,6 @@ const Activities = ({ loggedIn }) => {
           </div>
         );
       })}
-      {loggedIn ? (
-        <ActivityForm activities={activities} setActivities={setActivities} />
-      ) : null}
     </div>
   );
 };

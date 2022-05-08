@@ -12,12 +12,28 @@ html {
 
 .Components {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   flex-wrap: wrap;
+  flex-direction: column;
+  font-size: 1.25rem;
+  font-weight: bold;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
+
+.Cards {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: hsla(203.3, 78.8%, 16.7%, 50%);
+  margin: 15px;
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 33px;
+}
+
+.Form {
+  display: flex;
+  margin: 0 auto;
+};
 
 .Logout {
   width: "200px"; 
@@ -77,16 +93,3 @@ gap: 50px;
 .LoginTitle {
   justify-content: center;
 }
-
-.Cards {
-  display: inline-block;
-  background-color: hsla(203.3, 78.8%, 16.7%, 50%);
-  margin: 15px;
-  padding: 15px;
-  border: 1px solid black;
-  border-radius: 33px;
-}
-
-.ActivityForm {
-  display: flex;
-};

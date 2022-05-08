@@ -61,6 +61,7 @@ export const accountLogin = async (username, password) => {
     .then(response => response.json())
     .then(result => {
       localStorage.setItem("token", result.token)
+      localStorage.setItem("username", result.user.username)
       return (
         result.user.username
       )
@@ -85,6 +86,7 @@ export const accountCreation = async (username, password) => {
     .then((response) => response.json())
     .then((result) => {
       localStorage.setItem("token", result.token)
+      localStorage.setItem("username", result.user.username)
     })
     .catch(console.error);
 };

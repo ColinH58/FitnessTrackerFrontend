@@ -7,9 +7,11 @@ const ActivityForm = ({ activities, setActivities }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
+
     const activityCheck = activities.find(
       (activity) => activity.name === newActivity
     );
+
     if (activityCheck) {
       alert("This Activity Already Exists");
     } else {
@@ -39,7 +41,7 @@ const ActivityForm = ({ activities, setActivities }) => {
   };
 
   return (
-    <div className="ActivityForm">
+    <div className="Form">
       <form onSubmit={handleSubmit}>
         <h3>Create an Activity</h3>
         <label>Activity Name</label>

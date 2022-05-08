@@ -6,7 +6,8 @@ import { getMyRoutines } from "../api";
 
 const MyRoutines = () => {
   const [userRoutines, setUserRoutines] = useState([]);
-  const username = localStorage.getItem("username"); //THIS IS WRONG, HOW TO FIX?
+
+  const username = localStorage.getItem("username");
 
   useEffect(() => {
     const fetchRoutines = async () => {
@@ -17,7 +18,7 @@ const MyRoutines = () => {
         .catch(console.error);
     };
     fetchRoutines();
-  }, []);
+  }, [username]);
 
   return (
     <div className="Components">
