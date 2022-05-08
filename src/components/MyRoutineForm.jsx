@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const MyRoutineForm = ({ userRoutines, setUserRoutines }) => {
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
+  const [isPublic, setIsPublic] = useState(false);
   // const [routineActivities, setRoutineActivities] = useState([]);
 
   const handleSubmit = async (e) => {
@@ -15,24 +16,28 @@ const MyRoutineForm = ({ userRoutines, setUserRoutines }) => {
       if (routineCheck) {
         alert("This Routine Already Exists");
       } else {
-        const username = localStorage.getItem("username");
+        console.log("ANYTHING")
+        const token = localStorage.getItem("token")
         return await fetch(
-        `https://fast-plateau-20949.herokuapp.com/api/users/${username}/routines`,
+          "https://fast-plateau-20949.herokuapp.com/api/routines",
         {
           method: "POST",
           headers: {
-            "Content-type": "Application/json"
+            "Content-type": "Application/json",
+            "Authorization": `Bearer ${token}`
           },
           body: JSON.stringify({
             id: name,
             name: name,
             goal: goal,
+            isPublic
           }),
         }
       )
         .then((response) => response.json())
         .then((result) => {
-          setUserRoutines([result, ...userRoutines]);
+          console.log("THIS IS THE RESULT", result)
+          setUserRoutines([result, ...userRoutines])
         })
         .catch(console.error);
     }
@@ -63,10 +68,18 @@ const MyRoutineForm = ({ userRoutines, setUserRoutines }) => {
           onChange={(e) => setGoal(e.target.value)}
         />
         <hr />
+        <label>Public</label>
+        <br />
+        <input
+          type="checkbox"
+          checked={isPublic}
+          onChange={(e) => setIsPublic(e.target.checked)}
+        />
+        <hr />
         <button type="submit">Submit</button>
       </form>
     </div>
-  );
+  )
 };
 
 export default MyRoutineForm;

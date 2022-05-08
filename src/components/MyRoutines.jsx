@@ -4,21 +4,20 @@ import EditRoutine from "./EditRoutine";
 import DeleteRoutine from "./DeleteRoutine";
 import { getMyRoutines } from "../api";
 
-const MyRoutines = () => {
-  const [userRoutines, setUserRoutines] = useState({});
+const MyRoutines = ({ isPublic, setIsPublic }) => {
+  const [userRoutines, setUserRoutines] = useState([]);
 
   useEffect(() => {
     const fetchRoutines = async () => {
       await getMyRoutines()
         .then((result) => {
+          console.log("AHHHHHHHHHH", result)
           setUserRoutines(result);
         })
         .catch(console.error);
     };
     fetchRoutines();
   }, []);
-
-  // console.log(userRoutines)
 
   return (
     <div className="Components">
@@ -33,7 +32,7 @@ const MyRoutines = () => {
               <h3>Routine Creator: {routine.creatorName}</h3>
               <h3>Routine Name: {routine.name}</h3>
               <h3>Routine Goal: {routine.goal}</h3>
-              <EditRoutine
+              <EditRoutine isPublic={isPublic} setIsPublic={setIsPublic}
                 userRoutines={userRoutines}
                 setUserRoutines={setUserRoutines}
                 origName={routine.name}
