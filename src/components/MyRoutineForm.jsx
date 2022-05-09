@@ -16,7 +16,7 @@ const MyRoutineForm = ({ userRoutines, setUserRoutines, isPublic, setIsPublic })
       } else {
         const token = localStorage.getItem("token")
         return await fetch(
-          "http://fast-plateau-20949.herokuapp.com/api/routines",
+          "https://fast-plateau-20949.herokuapp.com/api/routines",
         {
           method: "POST",
           headers: {

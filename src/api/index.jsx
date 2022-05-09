@@ -1,5 +1,5 @@
 export const getActivities = async () => {
-  const url = "http://fast-plateau-20949.herokuapp.com/api/activities";
+  const url = "https://fast-plateau-20949.herokuapp.com/api/activities";
 
   const response = await fetch(url, {
     method: "GET",
@@ -12,7 +12,7 @@ export const getActivities = async () => {
 };
 
 export const getRoutines = async () => {
-  const url = "http://fast-plateau-20949.herokuapp.com/api/routines";
+  const url = "https://fast-plateau-20949.herokuapp.com/api/routines";
   const response = await fetch(url, {
     method: "GET",
     headers: {
@@ -27,7 +27,7 @@ export const getMyRoutines = async () => {
   const username = localStorage.getItem("username");
   const token = localStorage.getItem("token");
   return await fetch(
-    `http://fast-plateau-20949.herokuapp.com/api/users/${username}/routines`,
+    `https://fast-plateau-20949.herokuapp.com/api/users/${username}/routines`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +44,7 @@ export const getMyRoutines = async () => {
 
 export const accountLogin = async (username, password) => {
   return await fetch(
-    "http://fast-plateau-20949.herokuapp.com/api/users/login",
+    "https://fast-plateau-20949.herokuapp.com/api/users/login",
     {
       method: "POST",
       headers: {
@@ -66,7 +66,7 @@ export const accountLogin = async (username, password) => {
 };
 
 export const accountCreation = async (username, password) => {
-  await fetch("http://fast-plateau-20949.herokuapp.com/api/users/register", {
+  await fetch("https://fast-plateau-20949.herokuapp.com/api/users/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -86,7 +86,7 @@ export const accountCreation = async (username, password) => {
 
 export const getMe = async () => {
   const token = localStorage.getItem("token");
-  return await fetch("http://fast-plateau-20949.herokuapp.com/api/users/me", {
+  return await fetch("https://fast-plateau-20949.herokuapp.com/api/users/me", {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
@@ -98,7 +98,7 @@ export const getMe = async () => {
 };
 
 export const newRoutine = async (name, goal, isPublic) => {
-  return await fetch("http://fast-plateau-20949.herokuapp.com/api/routines", {
+  return await fetch("https://fast-plateau-20949.herokuapp.com/api/routines", {
     method: "POST",
     token: localStorage.getItem("token"),
     body: JSON.stringify({
@@ -117,7 +117,7 @@ export const newRoutine = async (name, goal, isPublic) => {
 export const updateRoutine = async (routineId, name, goal, isPublic) => {
   const token = localStorage.getItem("token");
   return await fetch(
-    `http://fast-plateau-20949.herokuapp.com/api/routines/${routineId}`,
+    `https://fast-plateau-20949.herokuapp.com/api/routines/${routineId}`,
     {
       method: "PATCH",
       headers: {
@@ -141,7 +141,7 @@ export const updateRoutine = async (routineId, name, goal, isPublic) => {
 export const deleteRoutine = async (routineId) => {
   const token = localStorage.getItem("token");
   await fetch(
-    `http://fast-plateau-20949.herokuapp.com/api/routines/${routineId}`,
+    `https://fast-plateau-20949.herokuapp.com/api/routines/${routineId}`,
     {
       method: "DELETE",
       headers: {
