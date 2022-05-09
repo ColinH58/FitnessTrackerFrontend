@@ -18,11 +18,11 @@ const EditRoutine = ({
     const updatedRoutine = await updateRoutine(id, name, goal, isPublic);
     const updated = userRoutines.map((update) => {
       if (update.id === id) {
-        return updatedRoutine
+        return updatedRoutine;
       } else {
-        return update
-      };
-    })
+        return update;
+      }
+    });
     setUserRoutines(updated);
   };
 
@@ -30,27 +30,33 @@ const EditRoutine = ({
     <div>
       <form onSubmit={handleSubmit}>
         <label>Name</label>
+        <br />
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
+        <hr />
         <label>Goal</label>
+        <br />
         <input
           type="text"
           value={goal}
           onChange={(e) => setGoal(e.target.value)}
         />
+        <hr />
         <label>Public?</label>
+        <br />
         <input
           type="checkbox"
           checked={isPublic}
           onChange={(e) => setIsPublic(e.target.checked)}
         />
-        <button type="submit">Submit Edits</button>
+        <hr />
+        <button className="EditBtn" type="submit">Submit The Edited Routine</button>
       </form>
     </div>
-  )  : (
+  ) : (
     <div>
       <button onClick={() => setIsClicked(true)}>Edit Routine</button>
     </div>
