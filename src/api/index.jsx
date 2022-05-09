@@ -101,7 +101,6 @@ export const getMe = async () => {
 export const newRoutine = async (name, goal, isPublic) => {
   return await fetch("https://fast-plateau-20949.herokuapp.com/api/routines", {
     method: "POST",
-    token: localStorage.getItem("token"),
     body: JSON.stringify({
       name: name,
       goal: goal,
