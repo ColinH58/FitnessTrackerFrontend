@@ -1,45 +1,83 @@
 import React, { useState } from "react";
-import { newRoutine } from "../api";
 
-const MyRoutineForm = () => {
+const MyRoutineForm = ({ userRoutines, setUserRoutines }) => {
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
+  const [isPublic, setIsPublic] = useState(false);
+  // const [routineActivities, setRoutineActivities] = useState([]);
 
-  const handleCreateRoutineSubmit = async (event) => {
-    event.preventDefault();
-    await newRoutine(name, goal);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    const routineCheck = userRoutines.find(
+      (routine) => routine.name === name
+      );
+      
+      if (routineCheck) {
+        alert("This Routine Already Exists");
+      } else {
+        const token = localStorage.getItem("token")
+        return await fetch(
+          "https://fast-plateau-20949.herokuapp.com/api/routines",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "Application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            id: name,
+            name: name,
+            goal: goal,
+            isPublic
+          }),
+        }
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          setUserRoutines([result, ...userRoutines])
+        })
+        .catch(console.error);
+    }
     setName("");
     setGoal("");
   };
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-  const handleGoalChange = (e) => {
-    setGoal(e.target.value);
-  };
 
   return (
-    <div>
-      <h1>Create a Routine</h1>
-      <form className="Cards" onSubmit={handleCreateRoutineSubmit}>
-        <label htmlFor="name">Name:</label>
+    <div className="Form">
+      <form onSubmit={handleSubmit}>
+      <h3>Create a Routine</h3>
+        <label>Name</label>
+        <br />
         <input
           type="text"
+          placeholder="Name your Routine"
           value={name}
-          onChange={handleNameChange}
+          onChange={(e) => setName(e.target.value)}
           name="name"
         />
-        <label htmlFor="goal">Goal:</label>
+        <hr />
+        <label>Goal</label>
+        <br />
         <input
           type="text"
-          name="goal"
+          placeholder="Write your Goal"
           value={goal}
-          onChange={handleGoalChange}
+          onChange={(e) => setGoal(e.target.value)}
         />
-        <button type="submit">Submit New Routine</button>
+        <hr />
+        <label>Post Publicly?</label>
+        <br />
+        <input
+          type="checkbox"
+          checked={isPublic}
+          onChange={(e) => setIsPublic(e.target.checked)}
+        />
+        <hr />
+        <button type="submit">Submit</button>
       </form>
     </div>
-  );
+  )
 };
 
 export default MyRoutineForm;

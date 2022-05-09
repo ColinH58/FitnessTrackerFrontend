@@ -1,42 +1,38 @@
 import React, { useState } from "react";
 import { updateRoutine } from "../api";
 
-const EditRoutine = async () => {
+const EditRoutine = ({ id, isPublic, setIsPublic }) => {
   const [clicked, setClicked] = useState(false);
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
 
-  const handleMessageChange = (event) => {
-    setName(event.target.value);
-  };
-
-  const handleGoalChange = (event) => {
-    setGoal(event.target.value);
-  };
-
   const handleEditRouteSubmit = async (e) => {
     e.preventDefault();
+    await updateRoutine(id, name, goal, isPublic);
+    setClicked(false);
   };
-  await updateRoutine(name, goal);
-  setClicked(false);
 
   return clicked ? (
     <div>
       <div>
         <form onSubmit={handleEditRouteSubmit}>
-          <label htmlFor="name">Name:</label>
+          <label>Name</label>
           <input
             type="text"
             value={name}
-            onChange={handleMessageChange}
-            name="name"
+            onChange={(e) => setName(e.target.value)}
           />
-          <label htmlFor="goal">Goal:</label>
+          <label>Goal</label>
           <input
             type="text"
-            name="goal"
             value={goal}
-            onChange={handleGoalChange}
+            onChange={(e) => setGoal(e.target.value)}
+          />
+          <label>Goal</label>
+          <input
+            type="checkbox"
+            value={isPublic}
+            onChange={(e) => setIsPublic(e.target.value)}
           />
           <button type="submit">Submit Edits</button>
         </form>

@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 
 const ActivityForm = ({ activities, setActivities }) => {
-  const [ newActivity, setNewActivity ] = useState("");
-  const [ newActivityDesc, setNewActivityDesc ] = useState("");
+  const [newActivity, setNewActivity] = useState("");
+  const [newActivityDesc, setNewActivityDesc] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
 
-    const activityCheck = activities.find(activity => activity.name === newActivity);
+    const activityCheck = activities.find(
+      (activity) => activity.name === newActivity
+    );
 
     if (activityCheck) {
       alert("This Activity Already Exists");
@@ -18,26 +20,28 @@ const ActivityForm = ({ activities, setActivities }) => {
         {
           method: "POST",
           headers: {
-            "Content-type" : "Application/json",
-            "Authorization" : `Bearer ${token}`
+            "Content-type": "Application/json",
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
             id: newActivity,
             name: newActivity,
-            description: newActivityDesc
-          })
-        }).then(response => response.json())
-          .then(result => {
-            setActivities([result, ...activities])
-          })
-        .catch(console.error)
+            description: newActivityDesc,
+          }),
+        }
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          setActivities([result, ...activities]);
+        })
+        .catch(console.error);
     }
     setNewActivity("");
     setNewActivityDesc("");
   };
 
   return (
-    <div className="ActivityForm">
+    <div className="Form">
       <form onSubmit={handleSubmit}>
         <h3>Create an Activity</h3>
         <label>Activity Name</label>
