@@ -66,7 +66,7 @@ export const accountLogin = async (username, password) => {
 };
 
 export const accountCreation = async (username, password) => {
-  await fetch("https://fast-plateau-20949.herokuapp.com/api/users/register", {
+  return await fetch("https://fast-plateau-20949.herokuapp.com/api/users/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -80,6 +80,7 @@ export const accountCreation = async (username, password) => {
     .then((result) => {
       localStorage.setItem("token", result.token);
       localStorage.setItem("username", result.user.username);
+      return result.user.username;
     })
     .catch(console.error);
 };
