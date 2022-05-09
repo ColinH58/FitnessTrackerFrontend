@@ -22,6 +22,7 @@ const Activities = ({ loggedIn }) => {
         <ActivityForm activities={activities} setActivities={setActivities} />
       ) : null}
       {activities.map((activity) => {
+
         return (
           <div className="Cards" key={activity.id}>
             <p>Activity Name: {activity.name}</p>
