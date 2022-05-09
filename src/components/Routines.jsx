@@ -3,17 +3,17 @@ import { getRoutines } from "../api";
 
 const Routines = () => {
   const [routines, setRoutines] = useState([]);
-  // const token = localStorage.getItem("userToken");
-  
+
   useEffect(() => {
-      const fetchRoutines = async() => {
-          await getRoutines().then(result => {
-            setRoutines(result)
-              })
-              .catch(console.error);
-      }
-      fetchRoutines();
-  }, [])
+    const fetchRoutines = async () => {
+      await getRoutines()
+        .then((result) => {
+          setRoutines(result);
+        })
+        .catch(console.error);
+    };
+    fetchRoutines();
+  }, []);
 
   return (
     <div className="Components">
@@ -26,22 +26,18 @@ const Routines = () => {
             {routine.activities.map((activity) => {
               return (
                 <div key={activity.id}>
-                    <p>Duration: {activity.duration}</p>
-                    <p>Count: {activity.count}</p>
-                    <p>Name: {activity.name}</p>
-                    <p>Description: {activity.description}</p>
+                  <p>Duration: {activity.duration}</p>
+                  <p>Count: {activity.count}</p>
+                  <p>Name: {activity.name}</p>
+                  <p>Description: {activity.description}</p>
                 </div>
-              )
+              );
             })}
           </div>
-        )
+        );
       })}
     </div>
   );
 };
 
 export default Routines;
-
-/*
-Create Cards for Each Routine with a .map() function
-*/
