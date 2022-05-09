@@ -4,7 +4,8 @@ import EditRoutine from "./EditRoutine";
 import DeleteRoutine from "./DeleteRoutine";
 import { getMyRoutines } from "../api";
 
-const MyRoutines = ({ isPublic, setIsPublic }) => {
+const MyRoutines = () => {
+  const [isPublic, setIsPublic] = useState(false);
   const [userRoutines, setUserRoutines] = useState([]);
   useEffect(() => {
     const fetchRoutines = async () => {
@@ -20,6 +21,8 @@ const MyRoutines = ({ isPublic, setIsPublic }) => {
   return (
     <div className="Components">
       <MyRoutineForm
+        isPublic={isPublic}
+        setIsPublic={setIsPublic}
         userRoutines={userRoutines}
         setUserRoutines={setUserRoutines}
       />
@@ -30,7 +33,9 @@ const MyRoutines = ({ isPublic, setIsPublic }) => {
               <h3>Routine Creator: {routine.creatorName}</h3>
               <h3>Routine Name: {routine.name}</h3>
               <h3>Routine Goal: {routine.goal}</h3>
-              <EditRoutine isPublic={isPublic} setIsPublic={setIsPublic}
+              <EditRoutine
+                isPublic={isPublic}
+                setIsPublic={setIsPublic}
                 userRoutines={userRoutines}
                 setUserRoutines={setUserRoutines}
                 origName={routine.name}
@@ -43,7 +48,7 @@ const MyRoutines = ({ isPublic, setIsPublic }) => {
                 id={routine.id}
               />
             </div>
-          )
+          );
         })
       ) : (
         <p className="Misc">No Routines to display</p>

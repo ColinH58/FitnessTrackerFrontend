@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 
-const MyRoutineForm = ({ userRoutines, setUserRoutines }) => {
+const MyRoutineForm = ({ userRoutines, setUserRoutines, isPublic, setIsPublic }) => {
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
-  const [isPublic, setIsPublic] = useState(false);
-  // const [routineActivities, setRoutineActivities] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

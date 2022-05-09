@@ -1,46 +1,58 @@
 import React, { useState } from "react";
 import { updateRoutine } from "../api";
 
-const EditRoutine = ({ id, isPublic, setIsPublic }) => {
-  const [clicked, setClicked] = useState(false);
+const EditRoutine = ({
+  id,
+  isPublic,
+  setIsPublic,
+  userRoutines,
+  setUserRoutines,
+}) => {
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
+  const [isClicked, setIsClicked] = useState(false);
 
-  const handleEditRouteSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    await updateRoutine(id, name, goal, isPublic);
-    setClicked(false);
+    setIsClicked(false);
+    const updatedRoutine = await updateRoutine(id, name, goal, isPublic);
+    const updated = userRoutines.map((update) => {
+      if (update.id === id) {
+        return updatedRoutine
+      } else {
+        return update
+      };
+    })
+    setUserRoutines(updated);
   };
 
-  return clicked ? (
+  return isClicked ? (
     <div>
-      <div>
-        <form onSubmit={handleEditRouteSubmit}>
-          <label>Name</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <label>Goal</label>
-          <input
-            type="text"
-            value={goal}
-            onChange={(e) => setGoal(e.target.value)}
-          />
-          <label>Goal</label>
-          <input
-            type="checkbox"
-            value={isPublic}
-            onChange={(e) => setIsPublic(e.target.value)}
-          />
-          <button type="submit">Submit Edits</button>
-        </form>
-      </div>
+      <form onSubmit={handleSubmit}>
+        <label>Name</label>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <label>Goal</label>
+        <input
+          type="text"
+          value={goal}
+          onChange={(e) => setGoal(e.target.value)}
+        />
+        <label>Public?</label>
+        <input
+          type="checkbox"
+          checked={isPublic}
+          onChange={(e) => setIsPublic(e.target.checked)}
+        />
+        <button type="submit">Submit Edits</button>
+      </form>
     </div>
-  ) : (
+  )  : (
     <div>
-      <button onClick={() => setClicked(true)}>Edit Routine</button>
+      <button onClick={() => setIsClicked(true)}>Edit Routine</button>
     </div>
   );
 };

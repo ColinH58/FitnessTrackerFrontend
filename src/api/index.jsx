@@ -93,8 +93,7 @@ export const getMe = async () => {
     },
   })
     .then((response) => response.json())
-    .then((result) => {
-    })
+    .then((result) => {})
     .catch(console.error);
 };
 
@@ -110,7 +109,7 @@ export const newRoutine = async (name, goal, isPublic) => {
   })
     .then((response) => response.json())
     .then((result) => {
-      return(result);
+      return result;
     })
     .catch(console.error);
 };
@@ -128,28 +127,32 @@ export const updateRoutine = async (routineId, name, goal, isPublic) => {
       body: JSON.stringify({
         name: name,
         goal: goal,
-        isPublic: isPublic
+        isPublic: isPublic,
       }),
     }
   )
-    .then( async (response) => await response.json())
+    .then((response) => response.json())
     .then((result) => {
-      return(result);
+      return result;
     })
     .catch(console.error);
 };
 
 export const deleteRoutine = async (routineId) => {
   const token = localStorage.getItem("token");
-  await fetch(`http://fast-plateau-20949.herokuapp.com/api/routines/${routineId}`, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  }).then(response => response.json())
-  .then(result => {
-    return(result);
-  })
-  .catch(console.error);
+  await fetch(
+    `http://fast-plateau-20949.herokuapp.com/api/routines/${routineId}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  )
+    .then((response) => response.json())
+    .then((result) => {
+      return result;
+    })
+    .catch(console.error);
 };
