@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
 import { accountCreation } from "../api";
 
 const CreateAccount = ({ setLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
 
   const handleUsername = (e) => {
     setUsername(e.target.value);
@@ -17,18 +15,16 @@ const CreateAccount = ({ setLoggedIn }) => {
 
   const submitInformation = async (e) => {
     e.preventDefault();
-    const account = await accountCreation(username, password);
-    console.log(account, "this is the account")
-    const token = localStorage.getItem("token")
-    if (token) {
-      navigate("/");
-     } else {
-       alert("Invalid Login, Try Again")
-     }
-    setUsername("");
-    setPassword("");
-    setLoggedIn(true);
-  };
+    if (password.length > 8) {
+      const account = await accountCreation(username, password);
+      setUsername("")
+      setPassword("")
+      setLoggedIn(true)
+      return(account)
+    } else {
+      alert("Your Password needs to be at least 9 characters long")
+    };
+  }
 
   return (
     <div className="Register">
