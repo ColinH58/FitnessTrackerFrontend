@@ -18,7 +18,7 @@ const MyRoutineForm = ({ userRoutines, setUserRoutines }) => {
       } else {
         const token = localStorage.getItem("token")
         return await fetch(
-          "https://fast-plateau-20949.herokuapp.com/api/routines",
+          "http://fast-plateau-20949.herokuapp.com/api/routines",
         {
           method: "POST",
           headers: {
@@ -26,7 +26,6 @@ const MyRoutineForm = ({ userRoutines, setUserRoutines }) => {
             "Authorization": `Bearer ${token}`
           },
           body: JSON.stringify({
-            id: name,
             name: name,
             goal: goal,
             isPublic

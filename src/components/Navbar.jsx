@@ -4,25 +4,25 @@ import { Link } from "react-router-dom";
 const Navbar = ({ loggedIn, setLoggedIn }) => {
   const links = [
     {
-      key: 1,
+      key: "Nav1",
       route: "/Activities",
-      placeholder: "Activites",
+      placeholder: "Activities",
       shouldDisplay: true,
     },
     {
-      key: 2,
+      key: "Nav2",
       route: "/Routines",
       placeholder: "Routines",
       shouldDisplay: true,
     },
     {
-      key: 3,
+      key: "Nav3",
       route: "/MyRoutines",
       placeholder: "My Routines",
       shouldDisplay: loggedIn,
     },
     {
-      key: 4,
+      key: "Nav4",
       route: "/Logout",
       placeholder: "Log out",
       shouldDisplay: loggedIn,
@@ -32,13 +32,13 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
       },
     },
     {
-      key: 5,
+      key: "Nav5",
       route: "/Register",
       placeholder: "Register",
       shouldDisplay: !loggedIn,
     },
     {
-      key: 6,
+      key: "Nav6",
       route: "/Login",
       placeholder: "Login",
       shouldDisplay: !loggedIn,

@@ -6,7 +6,7 @@ import { getMyRoutines } from "../api";
 
 const MyRoutines = ({ isPublic, setIsPublic }) => {
   const [userRoutines, setUserRoutines] = useState([]);
-
+  console.log("my routines", userRoutines)
   useEffect(() => {
     const fetchRoutines = async () => {
       await getMyRoutines()

@@ -16,7 +16,7 @@ const ActivityForm = ({ activities, setActivities }) => {
       alert("This Activity Already Exists");
     } else {
       return await fetch(
-        "https://fast-plateau-20949.herokuapp.com/api/activities",
+        "http://fast-plateau-20949.herokuapp.com/api/activities",
         {
           method: "POST",
           headers: {
