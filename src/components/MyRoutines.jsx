@@ -24,7 +24,7 @@ const MyRoutines = ({ isPublic, setIsPublic }) => {
         userRoutines={userRoutines}
         setUserRoutines={setUserRoutines}
       />
-      {userRoutines.length >= 1 ? (
+      {userRoutines ? (
         userRoutines.map((routine) => {
           return (
             <div className="Cards" key={routine.id}>
